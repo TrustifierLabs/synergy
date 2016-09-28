@@ -532,6 +532,10 @@ void MainWindow::startSynergy()
 		args << "--ipc";
 
 #if defined(Q_OS_WIN)
+		// tell the client/server to shut down when a ms windows desk
+		// is switched; this is because we may need to elevate or not
+		// based on which desk the user is in (login always needs
+		// elevation, where as default desk does not).
 		// Note that this is only enabled when synergy is set to elevate
 		// 'as needed' (e.g. on a UAC dialog popup) in order to prevent
 		// unnecessary restarts when synergy was started elevated or
